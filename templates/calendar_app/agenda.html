@@ -1,0 +1,29 @@
+{% extends "calendar_app/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mb-3 mt-3 pb-3 pt-3" style="background-color: #F3F4F7; color:green;">
+  <div class="row">
+    <div class="col text-center">
+      <h1>Agendas</h1>
+    </div>
+  </div>
+  <hr>
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col">
+          {% for obj in object_list %}
+
+          <a href="{% url 'calendar_app:calendars' %}?month={{ obj.start_time.year }}-{{ obj.start_time.month }} "><h1 class="m-2">{{obj.title}}</h1></a>
+          <p class="m-2">{{obj.start_time}}</p>
+          <hr>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
